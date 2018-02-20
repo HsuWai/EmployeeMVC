@@ -9,7 +9,7 @@ This project is based on the Spring Boot project and uses these packages :
 - Spring Core
 - JPA
 - Spring Data (Hibernate & MySQL )
-- Spring MVC (Tomcat)
+- Spring MVC
 - Thymleaf
 
 ### Installation ###
