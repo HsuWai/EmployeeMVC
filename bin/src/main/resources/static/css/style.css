@@ -1,0 +1,36 @@
+
+@font-face { 
+	font-family: 'Raleway'; 
+	src: url('../fonts/Raleway-Regular.ttf'); 
+}
+body{
+	font-family: Raleway;
+}
+.welcome{
+	color: red;
+}
+.navigation{
+	height: 5em;
+}
+.text_center{
+	text-align: center;
+}
+.justify{
+	text-align: justify;
+}
+.img-circle {
+    border-radius: 15%;
+}
+.loginForm{
+	padding: 2em 0 2em 0em;
+}
+.footer{
+	text-align: center;
+}
+.validation{
+	width: 25em;
+	height: 1em;
+}
+.hideCheckout{
+	display:none;
+}

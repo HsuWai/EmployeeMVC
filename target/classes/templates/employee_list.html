@@ -1,0 +1,97 @@
+<!DOCTYPE html>
+<html xmlns:th="http://www.thymeleaf.org">
+<head th:replace="common/admin_layout :: admin-header">
+<title>Welcome to Manage Employee Page</title>
+</head>
+<body>
+<div th:replace="common/admin_layout :: admin-navbar"></div>
+<div class="container">
+	<h2 class="text_center">Employee List</h2>
+    <!-- /.container -->
+	<div class="row">
+		<div class="col-sm-4">
+			<a href="/employee/add" class="btn btn-primary">Add</a>
+		</div>
+	</div>
+	
+    <div class="table-responsive">   
+	<table class="table table-striped" id="empList">		
+		<thead>
+			<tr class="thstyle">
+				<!-- <th class="no-sort">No.</th> -->
+				<th>Name</th>
+				<th>Email</th>
+				<th>Address</th>
+				<th>Department</th>
+				<th>Payment</th>
+				<th>Status</th>
+				<th class="no-sort">Edit</th>
+				<th class="no-sort">Delete</th>	
+				<!-- <th> Delete</th>			 -->				
+			</tr>
+		</thead>
+		<tbody>
+			
+			<tr th:each="emp : ${empList}">				
+				<!-- <td th:text="${emp.id}"></td> -->
+				<td th:text="${emp.name}"></td>
+				<td th:text="${emp.email}"></td>
+				<td th:text="${emp.address}"></td>
+				<td th:text="${emp.department.deptName}"></td>
+				<td th:text="${emp.payment.paymentType}"></td>
+				<td th:text="${emp.status.statusName}"></td>
+
+				<td class="">					
+					<form method="post" th:action="@{/employee/edit}">
+			        	<input type="text" hidden="hidden" value="id" name="id" th:value="${emp.id}"/>
+			        	<button type="submit" class="btn btn-primary btnedit"><i class="glyphicon glyphicon-edit"></i></button>
+			    	</form>
+				</td>
+				<td class="">
+					<input type="text"   hidden="hidden"  value="id"   th:value="${emp.id}"/>          		      
+					<button type="button" class="btn btn-primary btnedit"  th:onclick=" 'javascript:showModel(\'' + ${emp.id} + '\');' " >
+					<i class="glyphicon glyphicon-trash delete"></i></button>
+				</td>
+				
+			</tr>
+		</tbody>		
+	</table>
+	<form method="post" th:action="@{/employee/delete}">
+		<div class="modal fade" id="myModal" role="dialog">
+	    	<div class="modal-dialog">    
+	      	<!-- Modal content-->
+	      	<div class="modal-content">
+	        	<div class="modal-header">
+	          		<button type="button" class="close" data-dismiss="modal">&times;</button>
+	          		<h4 class="modal-title alignh4">Employee</h4>
+	       		</div>
+	        	<div class="modal-body">
+	          		<p>Are you sure to Delete?</p>
+	        	</div>      
+	        	<div class="modal-footer">
+	          		<input type="text"  hidden="text" id="delId2" name="id"  th:value="${delId}"/>
+	          		<button type="submit" class="btn btn-primary editbtn" >OK</button> 
+	         		<button type="button" class="btn btn-secondary editbtn" data-dismiss="modal">Cancel</button>
+	        	</div>
+      		</div>  
+    	</div>
+  </div>
+  </form>
+	</div>
+</div>
+
+<footer th:replace="common/admin_layout :: admin-footer"></footer>
+<script th:inline="javascript">
+$(document).ready(function(){
+	$("#home").removeClass("active");
+	$("#manage").addClass("active");
+});
+function showModel(variable){		
+	 console.log(variable);
+	 $("#delId").val(variable);
+	 $("#delId2").val(variable);
+	 $("#myModal").modal("show");
+	}
+</script>
+</body>
+</html>

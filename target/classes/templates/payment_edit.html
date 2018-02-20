@@ -1,0 +1,74 @@
+<!DOCTYPE html>
+<html xmlns:th="http://www.thymeleaf.org">
+<head th:replace="common/admin_layout :: admin-header">
+<title>Welcome to Manage Employee Page</title>
+</head>
+<body>
+<div th:replace="common/admin_layout :: admin-navbar"></div>
+<div class="container">
+	<h2>Edit Payment Form</h2>
+    <!-- /.container -->
+	<div class="form-group row" >
+		<div class="col-sm-8" align="left">
+			<a href="#" class="btn btn-primary" th:href="@{/payment/all}">
+				Back
+			</a>
+		</div>
+	</div>	
+    <div class="PaymentForm">
+	   	<form  th:object="${payment}" th:action="@{/payment/save}" method="post" id="payment-form" novalidate="novalidate">
+	   	<input type="text" hidden="hidden" value="paymentId" name="paymentId" th:field="*{paymentId}"/>
+		   	<div class="row">
+				<div class="col-sm-2">Payment Name:</div>
+				<div class="col-sm-4"><input type="text" name="paymentType" size="40" th:field="*{paymentType}" class="form-control"/></div>
+				<div class="col-sm-4"><p th:if="${#fields.hasErrors('paymentType')}" th:errors="*{paymentType}" /></div>
+			</div>
+			<br/>
+
+			<div class="row">
+				<div class="col-sm-2">Payment Rate: </div>
+				<div class="col-sm-4"><input type="text" name="paymentRate" class="form-control" th:field="*{paymentRate}"/></div>
+				<div class="col-sm-4"><p th:if="${#fields.hasErrors('paymentRate')}" th:errors="*{paymentRate}" /></div>
+			</div>
+			
+			<br/>
+			<div class="row">
+				<div class="col-sm-4">
+					<input type="submit" value="Update" class="btn btn-primary"/>
+					<button type="reset" class="btn btn-primary editbtn">Cancel</button>
+				</div>
+			</div>
+			
+		</form>
+	</div>
+</div>
+<footer th:replace="common/admin_layout :: admin-footer"></footer>
+<script src="../js/jquery.validate.min.js"></script>
+<script th:inline="javascript">
+$(function() {
+	$("#employee-form").validate({
+	    
+        // Specify the validation rules
+        rules: {
+        	paymentType: "required",
+        	paymentRate: "required"
+        },
+        
+        // Specify the validation error messages
+        messages: {
+        	paymentType: "Please enter Payment Type",
+        	paymentRate: "Please enter Payment Rate"
+        },
+        
+        submitHandler: function(form) {
+            form.submit();
+        }
+    });
+});
+	$(document).ready(function(){
+		$("#home").removeClass("active");
+		$("#manage").addClass("active");
+	});
+</script>
+</body>
+</html>

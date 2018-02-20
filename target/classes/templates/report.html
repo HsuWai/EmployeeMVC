@@ -1,0 +1,50 @@
+<!DOCTYPE html>
+<html xmlns:th="http://www.thymeleaf.org">
+<head th:replace="common/admin_layout :: admin-header">
+<title>Welcome to Manage Employee Page</title>
+</head>
+<body>
+<div th:replace="common/admin_layout :: admin-navbar"></div>
+<div class="container">
+	<h2 class="text_center">Salary Report</h2>
+    <!-- /.container -->
+    <div class="table-responsive">   
+	<table class="table table-striped" id="empList">		
+		<thead>
+			<tr class="thstyle">
+				<th>Name</th>
+				<th>Email</th>
+				<th>Payment Type</th>
+				<th>Payment Rate</th>
+				<th>Working Days</th>
+				<th>Working Hours</th>
+				<th>Total Salary</th>			
+			</tr>
+		</thead>
+		<tbody>
+			
+			<tr th:each="report: ${reportList}">				
+				<td th:text="${report.name}"></td>
+				<td th:text="${report.email}"></td>
+				<td th:text="${report.paymentType}"></td>
+				<td th:text="${report.paymentRate}"></td>
+				<td th:text="${report.workingDays}"></td>
+				<td th:text="${report.workingHours}"></td>
+				<td th:text="${report.totalSalary}"></td>
+			</tr>
+		</tbody>		
+	</table>
+
+	</div>
+</div>
+
+<footer th:replace="common/admin_layout :: admin-footer"></footer>
+<script th:inline="javascript">
+$(document).ready(function(){
+	$("#home").removeClass("active");
+	$("#manage").addClass("active");
+});
+
+</script>
+</body>
+</html>

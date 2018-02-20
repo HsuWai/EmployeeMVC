@@ -1,0 +1,96 @@
+<!DOCTYPE html>
+<html xmlns:th="http://www.thymeleaf.org">
+<head th:replace="common/admin_layout :: admin-header">
+<title>Calculation of Salary for Full-Time Employee</title>
+</head>
+<body>
+<div th:replace="common/admin_layout :: admin-navbar"></div>
+<div class="container">
+	<h1 class="text-center" th:inline="text">Simple Payroll System ( Full Time )</h1>
+	<br/>
+	<form method="post" th:action="@{/salary/full_time/calculate}" id="salary-form">
+	<div style="padding: 2em 2em 2em 20em;">
+		<div class="row">
+				<div class="col-sm-4">Choose Employee : </div>
+				<div class="col-sm-4">
+					<select class="form-control" id="empId" name="empId">						
+					    <option th:each="emp : ${empList}"
+					            th:value="${emp.id}"
+					            th:text="${emp.name}">
+					    </option>
+					</select>
+				</div>
+			</div>
+			<br/>
+			<div class="row">
+				<div class="col-sm-4" >Payment Type : </div>
+				<div class="col-sm-4">
+					<input type="text" name="paymentType" size="40" th:value="${payment.paymentType}" class="form-control" readonly="readonly"/>
+				</div>
+			</div>
+			<br/>
+			<div class="row">
+				<div class="col-sm-4">Basic Rate : </div>
+				<div class="col-sm-4">
+					<input type="text" name="paymentRate" th:value="${payment.paymentRate}" size="40" class="form-control" readonly="readonly"/>
+				</div>
+			</div>
+			<br/>
+			<div class="row">
+				<div class="col-sm-4">Attendance Days : </div>
+				<div class="col-sm-4">
+					<input type="text" name="attendance" size="40" class="form-control" />
+				</div>
+			</div>
+			<br/>
+			<div class="row">
+				<div class="col-sm-4">Daily Allowance : </div>
+				<div class="col-sm-4">
+					<input type="text" name="allowance" size="40" class="form-control" />
+				</div>
+			</div>
+			<br/>
+			<div class="row">
+				<div class="col-sm-4">Overtime : </div>
+				<div class="col-sm-4">
+					<input type="text" name="overtime" value="0.0" size="40" class="form-control" />
+				</div>
+			</div>
+			<br/>
+		</div>
+		<div class="row text-center">
+				<button type="submit" class="btn btn-primary text-center">Calculate</button>
+		</div>
+	</form>
+ </div>
+   
+<footer th:replace="common/admin_layout :: admin-footer"></footer>
+<script src="../js/jquery.validate.min.js"></script>
+<script type="text/javascript">
+$(function() {
+	$("#salary-form").validate({
+	    
+        // Specify the validation rules
+        rules: {
+        	attendance: "required",
+        	allowance: "required"
+        },
+        
+        // Specify the validation error messages
+        messages: {
+        	attendance: "Please enter employee's attendance days",
+        	allowance: "Please enter daily allowance"
+        },
+        
+        submitHandler: function(form) {
+            form.submit();
+        }
+    });
+});
+$(document).ready(function(){
+	$("#home").addClass("active");
+	$("#manage").removeClass("active");
+});
+</script>
+</body>
+</html>
