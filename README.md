@@ -20,14 +20,3 @@ I also set up for logging.
 For Test cases, I use juint.
 * Deployment instructions
 No need to do special set up for deployment.
-
-### Contribution guidelines ###
-
-* Writing tests
-* Code review
-* Other guidelines
-
-### Who do I talk to? ###
-
-* Repo owner or admin
-* Other community or team contact
