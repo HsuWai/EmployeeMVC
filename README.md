@@ -1,22 +1,18 @@
 # README #
 
-This README would normally document whatever steps are necessary to get your application up and running.
+This EmployeeMVC is demostrating how to implement Spring CRUD operations with entity.
 
-### What is this repository for? ###
+### Which Contains?
 
-Simple Payroll Calculation for Part-time and Full-time employees.
-Using MySQL for admin login.
+This project is based on the Spring Boot project and uses these packages :
+- Maven
+- Spring Core
+- JPA
+- Spring Data (Hibernate & MySQL )
+- Spring MVC (Tomcat)
+- Thymleaf
 
-### How do I get set up? ###
-
-* Smary of set up
-This is Spring Boot Application. So, you just need to run the Main Class.
-
-* Database configuration
-Database configuration can be updated at application.properties.
-I also set up for logging.
-
-* How to run tests
-For Test cases, I use juint.
-* Deployment instructions
-No need to do special set up for deployment.
+### Installation ###
+The project is created with Maven, so you just need to import it to your IDE and build the project to resolve the dependencies.
+Database configuration is in application.properties.
+Run the project and head out to http://localhost:8090
