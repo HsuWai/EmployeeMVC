@@ -1,6 +1,7 @@
 # README #
 
 This EmployeeMVC is demostrating how to implement Spring CRUD operations with entity.
+This Branch also include implementation for pagination with thymeleaf.
 
 ### Which Contains?
 
