@@ -19,6 +19,7 @@ import com.app.proj.backend.entity.Employee;
 import com.app.proj.backend.repositories.EmployeeRepository;
 import com.app.proj.backend.service.DepartmentService;
 import com.app.proj.backend.service.EmployeeService;
+import com.app.proj.specification.EmployeeSpecification;
 
 /**
  * @author HsuWaiWaiTun
@@ -50,15 +51,7 @@ public class EmployeeTests {
 		employeeService.addEmployee(emp);
 		logger.debug("Employee Creation Successful");
 	}
-	
-	@Ignore
-	@Test
-	public void allEmployees() {
-		List<Employee> empList = employeeService.findAll();
-		for(Employee e: empList){
-			logger.debug(e.toString());
-		}
-	}
+
 	
 	@Ignore
 	@Test
@@ -71,6 +64,7 @@ public class EmployeeTests {
 		logger.debug(e.toString());
 	}
 
+	@Ignore
 	@Test
 	public void deleteEmployee(){
 		//employeeService.deleteEmployee(2);
@@ -87,5 +81,10 @@ public class EmployeeTests {
 		for(Employee e: empList){
 			logger.debug("Employee : "+e.toString());
 		}
+	}
+	
+	@Test
+	public void givenLast_whenGettingListOfUsers_thenCorrect() {
+	    
 	}
 }
