@@ -98,6 +98,7 @@ public class EmployeeController {
 		Pager pager = new Pager(employees.getTotalPages(), employees.getNumber(), BUTTONS_TO_SHOW);
 		
 		System.out.println(employees.getNumberOfElements());
+		
 		modelAndView.addObject("empList", employees);
 		modelAndView.addObject("selectedPageSize", evalPageSize);
 		modelAndView.addObject("pageSizes", PAGE_SIZES);
@@ -183,6 +184,6 @@ public class EmployeeController {
 		log.debug("Delete Employee");
 		employeeService.deleteEmployee(id);
 		log.debug("Delete Successful " + id);
-		return "redirect:/employee/all";
+		return "redirect:/employees";
 	}
 }

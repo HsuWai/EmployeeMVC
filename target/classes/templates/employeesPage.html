@@ -21,7 +21,7 @@
         </div>
 	</div>
 
-    <div th:if="${not #lists.isEmpty(empList)}" >   
+    <div th:if="${empList.totalElements != 0}" >   
 	<table class="table table-striped">		
 		<thead>
 			<tr class="thstyle">
@@ -71,7 +71,7 @@
                         th:selected="${pageSize} == ${selectedPageSize}"></option>
             </select>
         </div>
-        <div th:if="${empList.totalPages != 1}" class="form-group col-md-11 pagination-centered">
+        <div th:if="${empList.totalPages != 1 and empList.totalElements != 0}" class="form-group col-md-11 pagination-centered">
             <ul class="pagination">
                 <li th:class="${empList.number == 0} ? disabled">
                     <a class="pageLink" th:href="@{/employees?(pageSize=${selectedPageSize}, page=1)}">&laquo;</a>

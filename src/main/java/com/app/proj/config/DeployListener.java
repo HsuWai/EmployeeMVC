@@ -8,11 +8,13 @@ import org.slf4j.LoggerFactory;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Component;
 import com.app.proj.backend.entity.Department;
+import com.app.proj.backend.entity.Employee;
 import com.app.proj.backend.entity.Payment;
 import com.app.proj.backend.entity.Status;
 import com.app.proj.backend.entity.User;
 import com.app.proj.backend.entity.UserRole;
 import com.app.proj.backend.service.DepartmentService;
+import com.app.proj.backend.service.EmployeeService;
 import com.app.proj.backend.service.PaymentService;
 import com.app.proj.backend.service.StatusService;
 import com.app.proj.backend.service.UserRoleService;
@@ -44,6 +46,9 @@ public class DeployListener {
 	
 	@Autowired
 	StatusService statusService;
+	
+	@Autowired
+	EmployeeService employeeService;
 
     @PostConstruct
     public void init(){
@@ -104,6 +109,7 @@ public class DeployListener {
     		statusService.addStatus(s3);
     		log.debug("Status added");
     	}
+
     	
     }
 }

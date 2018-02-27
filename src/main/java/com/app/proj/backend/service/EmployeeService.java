@@ -26,7 +26,7 @@ public class EmployeeService {
 		return (List<Employee>) employeeRepository.findAll();
 	}*/
 	
-	public Iterable<Employee> listAllProducts() {
+	public List<Employee> listAllProducts() {
         return employeeRepository.findAll();
     }
 	
