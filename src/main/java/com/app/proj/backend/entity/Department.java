@@ -1,5 +1,6 @@
 package com.app.proj.backend.entity;
 
+import java.io.Serializable;
 import java.util.ArrayList;
 import java.util.List;
 
@@ -22,7 +23,12 @@ import org.hibernate.annotations.FetchMode;
  *
  */
 @Entity
-public class Department {
+public class Department implements Serializable {
+
+	/**
+	 * 
+	 */
+	private static final long serialVersionUID = 1L;
 
 	@Id
 	@GeneratedValue(strategy = GenerationType.AUTO)

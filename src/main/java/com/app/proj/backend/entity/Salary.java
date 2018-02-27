@@ -1,10 +1,14 @@
 package com.app.proj.backend.entity;
 
+import java.io.Serializable;
+
 import javax.persistence.Column;
 import javax.persistence.Entity;
 import javax.persistence.GeneratedValue;
 import javax.persistence.GenerationType;
 import javax.persistence.Id;
+
+import org.hibernate.envers.Audited;
 
 /**
  * @author HsuWaiWaiTun
@@ -12,7 +16,13 @@ import javax.persistence.Id;
  */
 
 @Entity
-public class Salary {
+@Audited
+public class Salary implements Serializable{
+
+	/**
+	 * 
+	 */
+	private static final long serialVersionUID = 1L;
 
 	@Id
 	@GeneratedValue(strategy = GenerationType.AUTO)

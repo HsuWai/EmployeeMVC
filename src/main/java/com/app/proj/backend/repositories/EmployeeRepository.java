@@ -1,8 +1,12 @@
 package com.app.proj.backend.repositories;
 
 import java.util.List;
+
+import org.springframework.data.domain.Page;
+import org.springframework.data.domain.Pageable;
+import org.springframework.data.jpa.repository.JpaRepository;
+import org.springframework.data.jpa.repository.JpaSpecificationExecutor;
 import org.springframework.data.jpa.repository.Query;
-import org.springframework.data.repository.CrudRepository;
 import org.springframework.stereotype.Repository;
 
 import com.app.proj.backend.entity.Employee;
@@ -12,8 +16,11 @@ import com.app.proj.backend.entity.Employee;
  *
  */
 @Repository
-public interface EmployeeRepository extends CrudRepository<Employee, Long>{
+public interface EmployeeRepository extends JpaRepository<Employee, Long>,JpaSpecificationExecutor<Employee>{
 
+	public Page<Employee> findAll(Pageable pageable);
+	public Page<Employee> findByName(String name, Pageable pageable);
+	
 	public Employee findByName(String name);
 	public Employee findByNameAndEmail(String name, String email);
 	public Employee findByEmail(String email);
